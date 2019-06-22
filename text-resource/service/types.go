@@ -3,7 +3,7 @@ package service
 type GetTextRequest struct {
 	textId string
 	locale string
-	params []string
+	params []interface{}
 }
 
 type AddTextRequest struct {
