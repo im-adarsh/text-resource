@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package media_proto;
+
+service TextResource {
+    rpc GetText (GetTextRequest) returns (GetTextResponse) {}
+}
+
+message GetTextRequest {
+    string text_id = 1;
+    repeated Param params = 2;
+
+    message Param {
+      string param = 1;
+    }
+}
+
+message GetTextResponse {
+    string text = 1;
+}
