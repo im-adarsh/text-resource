@@ -1,0 +1,6 @@
+#!/bin/bash
+CODEDIR='/go/src/github.com/im-adarsh/text-resource'
+bash $CODEDIR/docker/scripts/startup_common.sh
+
+echo "starting supervisord"
+exec supervisord -n -c /etc/supervisor/supervisord.conf

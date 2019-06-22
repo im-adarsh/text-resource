@@ -1,0 +1,12 @@
+#!/bin/bash
+CODEDIR='/go/src/github.com/im-adarsh/text-resource'
+export IS_STAGE='true'
+
+# swicth config to stage
+sed -i 's|/config/prod/|/config/stage/|g' $CODEDIR/docker/consul-template/*
+sed -i 's|10.240|10.140|g' $CODEDIR/docker/consul-template/*
+
+bash $CODEDIR/docker/scripts/startup_common.sh
+
+echo "starting supervisord"
+exec supervisord -n -c /etc/supervisor/supervisord.conf
