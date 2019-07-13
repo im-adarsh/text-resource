@@ -1,21 +1,17 @@
 package service
 
-import "fmt"
+import (
+	"context"
+
+	"github.com/im-adarsh/text-resource/text-resource/text_resource_proto"
+)
 
 type textResourceClient struct{}
 
-func NewTextResourceClient()TextResourceClient {
+func NewTextResourceClient() text_resource_proto.TextResourceServer {
 	return &textResourceClient{}
 }
 
-func (textResourceClient) GetText(t GetTextRequest) string {
-	res :=  t.textId
-	// TODO get displayTextTmpl for cache or db
-	res = fmt.Sprintf(t.textId, t.params...)
-	return res
-
-}
-
-func (textResourceClient) AddText(t AddTextRequest) error {
+func (textResourceClient) GetText(context.Context, *text_resource_proto.GetTextRequest) (*text_resource_proto.GetTextResponse, error) {
 	panic("implement me")
 }

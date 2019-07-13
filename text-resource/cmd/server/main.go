@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/gin-gonic/gin"
 	"github.com/im-adarsh/text-resource/text-resource/cmd/server/endpoint"
 	"github.com/im-adarsh/text-resource/text-resource/service"
@@ -18,4 +20,20 @@ func main() {
 	if err != nil {
 		panic("unable to run server")
 	}
+	fmt.Println("hello my name is adarsh kumar")
+
+}
+
+func helloworld() {
+
+}
+
+func helloworld1() {
+	fmt.Println("i am working in carousell")
+	fmt.Println("this is my new key board")
+	fmt.Println("i am liking this new keyboar")
+
+	fmt.Println("i am working in carousell")
+	fmt.Println("this is my exiting keyboard")
+	fmt.Println("i am liking this exiting keyboard")
 }

@@ -4,8 +4,12 @@
 package text_resource_proto
 
 import (
+	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
+	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -176,4 +180,84 @@ var fileDescriptor_e9448d6f46476500 = []byte{
 	0x6c, 0xa3, 0x34, 0x2e, 0x1e, 0xa8, 0x1a, 0xb0, 0xc5, 0x42, 0x61, 0x5c, 0xec, 0x50, 0x6d, 0x42,
 	0xca, 0x44, 0xb8, 0x49, 0x4a, 0x05, 0xbf, 0x22, 0x88, 0xcd, 0x4a, 0x0c, 0x49, 0x6c, 0x60, 0x09,
 	0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0xc8, 0x19, 0xfa, 0xc3, 0x67, 0x01, 0x00, 0x00,
+}
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ context.Context
+var _ grpc.ClientConn
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion4
+
+// TextResourceClient is the client API for TextResource service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type TextResourceClient interface {
+	GetText(ctx context.Context, in *GetTextRequest, opts ...grpc.CallOption) (*GetTextResponse, error)
+}
+
+type textResourceClient struct {
+	cc *grpc.ClientConn
+}
+
+func NewTextResourceClient(cc *grpc.ClientConn) TextResourceClient {
+	return &textResourceClient{cc}
+}
+
+func (c *textResourceClient) GetText(ctx context.Context, in *GetTextRequest, opts ...grpc.CallOption) (*GetTextResponse, error) {
+	out := new(GetTextResponse)
+	err := c.cc.Invoke(ctx, "/text_resource_proto.TextResource/GetText", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// TextResourceServer is the server API for TextResource service.
+type TextResourceServer interface {
+	GetText(context.Context, *GetTextRequest) (*GetTextResponse, error)
+}
+
+// UnimplementedTextResourceServer can be embedded to have forward compatible implementations.
+type UnimplementedTextResourceServer struct {
+}
+
+func (*UnimplementedTextResourceServer) GetText(ctx context.Context, req *GetTextRequest) (*GetTextResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetText not implemented")
+}
+
+func RegisterTextResourceServer(s *grpc.Server, srv TextResourceServer) {
+	s.RegisterService(&_TextResource_serviceDesc, srv)
+}
+
+func _TextResource_GetText_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTextRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TextResourceServer).GetText(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/text_resource_proto.TextResource/GetText",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TextResourceServer).GetText(ctx, req.(*GetTextRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _TextResource_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "text_resource_proto.TextResource",
+	HandlerType: (*TextResourceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetText",
+			Handler:    _TextResource_GetText_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "text_resource.proto",
 }

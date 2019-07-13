@@ -1,18 +1,11 @@
 package service
 
-type GetTextRequest struct {
-	textId string
-	locale string
-	params []interface{}
-}
+import (
+	"context"
 
-type AddTextRequest struct {
-	textId string
-	locale string
-	displayTextTmpl string
-}
+	"github.com/im-adarsh/text-resource/text-resource/text_resource_proto"
+)
 
 type TextResourceClient interface {
-	GetText(GetTextRequest) string
-	AddText(AddTextRequest) error
+	GetText(ctx context.Context, req text_resource_proto.GetTextRequest) (text_resource_proto.GetTextResponse, error)
 }
