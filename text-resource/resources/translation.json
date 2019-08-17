@@ -3,7 +3,25 @@
     {
       "key" : "text.hello_world",
       "locale" : "en",
-      "value" : "hello {{.world}}",
+      "value" : "hello en {{.world}}",
+      "default" : true
+    },
+    {
+      "key" : "text.hello_world",
+      "locale" : "ja",
+      "value" : "hello ja {{.world}}",
+      "default" : true
+    },
+    {
+      "key" : "text.hello_world",
+      "locale" : "hn",
+      "value" : "hello hn {{.world}}",
+      "default" : true
+    },
+    {
+      "key" : "text.hello_world",
+      "locale" : "gm",
+      "value" : "hello gm {{.world}}",
       "default" : true
     }
   ]
