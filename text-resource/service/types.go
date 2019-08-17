@@ -8,4 +8,5 @@ type Translations struct {
 
 type TranslationService interface {
 	Load() error
+	GetText(key, locale string) (string, error)
 }

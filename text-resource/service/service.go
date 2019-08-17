@@ -46,3 +46,15 @@ func (t *translationService) Load() error {
 
 	return nil
 }
+
+func (t *translationService) GetText(key, locale string) (string, error) {
+	v, err := t.redis.GetTranslation(redis.GetTranslation{
+		Key:    key,
+		Locale: locale,
+	})
+	if err != nil {
+		fmt.Println("error : ", err)
+		return key, err
+	}
+	return v, nil
+}
