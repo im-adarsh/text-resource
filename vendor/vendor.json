@@ -41,12 +41,6 @@
 			"revisionTime": "2019-08-16T01:10:44Z"
 		},
 		{
-			"checksumSHA1": "JcO96R6MXlkhdskv03eeQNaiHNs=",
-			"path": "github.com/go-redis/redis",
-			"revision": "e471faf7f895e28a238bed884f65bca373cd3090",
-			"revisionTime": "2019-08-16T15:16:26Z"
-		},
-		{
 			"path": "github.com/go-redis/redis/v7/internal",
 			"revision": "e471faf7f895e28a238bed884f65bca373cd3090"
 		},

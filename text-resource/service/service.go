@@ -23,7 +23,7 @@ func NewTranslationService() TranslationService {
 
 func (t *translationService) Load() error {
 
-	jsonFile, err := os.Open("../resources/translation.json")
+	jsonFile, err := os.Open("text-resource/resources/translation.json")
 	defer jsonFile.Close()
 
 	if err != nil {
