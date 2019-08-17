@@ -6,6 +6,8 @@ import (
 	"io/ioutil"
 	"os"
 
+	"github.com/im-adarsh/text-resource/text-resource/service/tmpl"
+
 	"github.com/im-adarsh/text-resource/text-resource/service/store/redis"
 )
 
@@ -56,5 +58,5 @@ func (t *translationService) GetText(key, locale string) (string, error) {
 		fmt.Println("error : ", err)
 		return key, err
 	}
-	return v, nil
+	return tmpl.FillTmpl(v, nil), nil
 }
