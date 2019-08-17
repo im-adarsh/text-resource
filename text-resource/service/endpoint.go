@@ -8,9 +8,14 @@ import (
 
 const endpointPrefix = "/text-resource/v1"
 
+const (
+	Load    = endpointPrefix + "/load"
+	GetText = endpointPrefix + "/get-text/:locale/:key"
+)
+
 func MakeEndPoint(r *gin.Engine, t TranslationService) {
 
-	r.GET(endpointPrefix+"/load", func(c *gin.Context) {
+	r.GET(Load, func(c *gin.Context) {
 		err := t.Load()
 		if err != nil {
 			fmt.Println("", err)
@@ -20,9 +25,10 @@ func MakeEndPoint(r *gin.Engine, t TranslationService) {
 		})
 	})
 
-	r.GET(endpointPrefix+"/get-text/:locale", func(c *gin.Context) {
+	r.GET(GetText, func(c *gin.Context) {
 		locale := c.Param("locale")
-		s, err := t.GetText("text.hello_world", locale)
+		key := c.Param("key")
+		s, err := t.GetText(key, locale)
 		if err != nil {
 			fmt.Println("", err)
 		}
