@@ -14,9 +14,7 @@ func NewRedisClient(config Config) RedisClient {
 
 	r := redisClient{}
 	r.client = redis.NewClient(&redis.Options{
-		Addr:         config.Host,
-		ReadTimeout:  config.Timeout,
-		WriteTimeout: config.Timeout,
+		Addr: "localhost:32768",
 	})
 
 	return &r

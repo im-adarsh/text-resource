@@ -13,7 +13,7 @@ type translationService struct {
 	redis redis.RedisClient
 }
 
-func New() TranslationService {
+func NewTranslationService() TranslationService {
 
 	r := translationService{}
 	r.redis = redis.NewRedisClient(redis.Config{})
