@@ -1,9 +1,10 @@
-package service
+package endpoint
 
 import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
+	"github.com/im-adarsh/text-resource/text-resource/service"
 )
 
 const endpointPrefix = "/text-resource/v1"
@@ -13,7 +14,7 @@ const (
 	GetText = endpointPrefix + "/get-text/:locale/:key"
 )
 
-func MakeEndPoint(r *gin.Engine, t TranslationService) {
+func MakeEndPoint(r *gin.Engine, t service.TranslationService) {
 
 	r.GET(Load, func(c *gin.Context) {
 		err := t.Load()
