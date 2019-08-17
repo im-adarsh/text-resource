@@ -1,0 +1,10 @@
+{
+  "translations" : [
+    {
+      "key" : "text.hello_world",
+      "locale" : "en",
+      "value" : "hello {{.world}}",
+      "default" : true
+    }
+  ]
+}
